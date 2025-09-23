@@ -21,5 +21,23 @@ public class FindLongestNonRepeatingSubstring{
         }
         return max;
     }
+
+    //Optimal Solution using HashSet
+    private static int findSubString(String s){
+        if(s.isEmpty()) return -1;
+        int left = 0;
+        int max = 0;
+        Set<Character> seen = new HashSet<>();
+
+        for(int right = 0; right < s.length(); right++){
+            while(seen.contains(s.charAt(right))){
+                seen.remove(s.charAt(left));
+                left++;
+            }
+        seen.add(s.charAt(right));
+        max = Math.max(max, right-left +1);
+        }
+        return max;
+    }
 }
 }
